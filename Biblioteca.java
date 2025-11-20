@@ -25,6 +25,8 @@ public class Biblioteca {
 
     public void buscarLivroPorAutor(String autor){
         System.out.println(autorlivroMap.get(autor));
+
+        // teste
         System.out.println(autorlivroMap.get(autor).equals(autor));
     }
 }
