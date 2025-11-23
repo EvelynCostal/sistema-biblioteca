@@ -1,3 +1,5 @@
+package modelo;
+
 import java.util.Objects;
 public class Livro {
     private String titulo;
@@ -5,9 +7,10 @@ public class Livro {
     private int ano;
 
 
-    public Livro(String titulo, String autor) {
+    public Livro(String titulo, String autor, int ano) {
         this.titulo = titulo;
         this.autor = autor;
+        this.ano = ano;
     }
 
     public int getAno() {
@@ -36,16 +39,23 @@ public class Livro {
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Livro livro = (Livro) obj;
+        return Objects.equals(titulo, livro.titulo);
     }
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+
+        return Objects.hash(titulo, autor, ano);
     }
 
     @Override
     public String toString() {
-        return getTítulo();
+        return "Nome do livro: " + getTítulo() + " , autor : " + getAutor() + " ano: " + getAno();
     }
+
+
+
 }
