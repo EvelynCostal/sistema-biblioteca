@@ -12,16 +12,16 @@ public class    Biblioteca {
     Map< String, Set<Livro>> autorlivroMap = new HashMap<>();
     Set<Livro> listaLivro = new HashSet<>();
 
-    public void adicionarLivro(String titulo, String autor, int ano){
-        Livro livro = new Livro(titulo, autor, ano);
+    public void adicionarLivro(Livro livro){
         try {
             if (listaLivro.contains(livro)) {
-                throw new LivroJaExisteException("O livro " + titulo + " já existe na biblioteca.");
+                throw new LivroJaExisteException("O livro " + livro.getTitulo() + " já existe na biblioteca.");
             }
             listaLivro.add(livro);
-            autorlivroMap.putIfAbsent(autor, new HashSet<>());
-            autorlivroMap.get(autor).add(livro);
-            System.out.println("modelo.Livro adicionado com sucesso!");
+            autorlivroMap.putIfAbsent(livro.getAutor(), new HashSet<>());
+            autorlivroMap.get(livro.getAutor()).add(livro);
+            System.out.println("Livro adicionado com sucesso!");
+            System.out.println(livro);
 
         } catch (LivroJaExisteException e){
             System.out.println(e.getMessage());
@@ -32,8 +32,9 @@ public class    Biblioteca {
     public void buscarLivroPorTitulo(String titulo) {
         try {
             for (Livro livro : listaLivro) {
-                if (livro.getTítulo().equalsIgnoreCase(titulo)) {
-                    System.out.println("modelo.Livro encontrado: " + livro);
+                System.out.println(livro);
+                if (livro.getTitulo().equalsIgnoreCase(titulo)) {
+                    System.out.println("Livro encontrado: " + livro);
                     return;
                 }
             }
@@ -54,7 +55,7 @@ public class    Biblioteca {
 
         Set<Livro> livros =  autorlivroMap.get(autor);
         for (Livro livro : livros){
-            System.out.println(livro.getTítulo());
+            System.out.println(livro.getTitulo());
         }
     }
 

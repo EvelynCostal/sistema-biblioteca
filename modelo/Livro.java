@@ -1,59 +1,48 @@
 package modelo;
+import dto.VolumeInfo;
 
 import java.util.Objects;
 public class Livro {
-    private String titulo;
-    private String autor;
-    private int ano;
+    private String title;
+    private String authors;
+    private String publishedDate;
 
 
-    public Livro(String titulo, String autor, int ano) {
-        this.titulo = titulo;
-        this.autor = autor;
-        this.ano = ano;
+    public Livro(String title, String authors, String publishedDate) {
+        this.title = title;
+        this.authors = authors;
+        this.publishedDate = publishedDate;
+
     }
 
-    public int getAno() {
-        return ano;
-    }
-
-    public void setAno(int ano) {
-        this.ano = ano;
-    }
 
     public String getAutor() {
-        return autor;
+        return authors;
     }
 
-    public void setAutor(String autor) {
-        this.autor = autor;
+    public String getTitulo() {
+        return title;
     }
 
-    public String getTítulo() {
-        return titulo;
-    }
-
-    public void setTítulo(String título) {
-        this.titulo = título;
-    }
+    public String getDataLancamento() {return publishedDate;}
 
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Livro livro = (Livro) obj;
-        return Objects.equals(titulo, livro.titulo);
+        return Objects.equals(title, livro.title);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(titulo, autor, ano);
+        return Objects.hash(title, authors, publishedDate);
     }
 
     @Override
     public String toString() {
-        return "Nome do livro: " + getTítulo() + " , autor : " + getAutor() + " ano: " + getAno();
+        return "Nome do livro: " + getTitulo() + " , autor : " + getAutor() + " ano: " + getDataLancamento();
     }
 
 

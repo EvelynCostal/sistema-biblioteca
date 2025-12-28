@@ -1,19 +1,22 @@
 package main;
 
 import modelo.Biblioteca;
+import webService.ConsultaLivros;
+
+import java.io.IOException;
+import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, InterruptedException {
         Biblioteca bibli = new Biblioteca();
+        ConsultaLivros consultaLivros = new ConsultaLivros();
+        Scanner scanner = new Scanner(System.in);
 
-        bibli.adicionarLivro("O barco", "Evelyn Costal", 2009);
-        bibli.adicionarLivro("A Canoa", "Evelyn Costal", 2009);
 
+        System.out.println("Busque um livro: ");
+        String livro = scanner.nextLine();
 
-        bibli.adicionarLivro("O barco", "Evelyn Costal", 2009);
+        bibli.adicionarLivro( consultaLivros.consultaLivros(livro));
 
-        bibli.buscarLivroPorAutor("Evelyn Costal");
-
-        bibli.buscarLivroPorTitulo("O navio");
     }
 }
